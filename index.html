@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAHAMAN TAILOR</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* ============ FLIP CARD ============ */
+    .flip-card {
+      perspective: 1000px;
+      width: 100%;
+      height: 340px;
+      position: relative;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%; 
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      border-radius: 1rem;
+    }
+
+    .flip-card.flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front, .flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 1rem;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+    }
+
+    .flip-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.9rem;
+    }
+
+    .flip-back {
+      background: linear-gradient(to right, #b8860b, #8b5a2b);
+      color: white;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 0.9rem;
+    }
+
+    /* ============ BUTTON STYLE ============ */
+    .btn {
+      border: 2px solid #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.5rem;
+      transition: 0.3s;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: white;
+      color: #8b5a2b;
+    }
+
+    /* ============ GLOW TEXT ANIMATION ============ */
+    @keyframes glowText {
+      0% { text-shadow: 0 0 5px #fff, 0 0 10px #ffcc00, 0 0 15px #b8860b; opacity: 0; }
+      50% { opacity: 1; }
+      100% { text-shadow: 0 0 10px #fff, 0 0 20px #ffcc00, 0 0 30px #b8860b; opacity: 1; }
+    }
+
+    .glow {
+      animation: glowText 2s ease-in-out infinite alternate;
+    }
+
+    /* ============ ANIMATED MULTICOLOR BORDER ============ */
+    .animated-border {
+      position: relative;
+      border-radius: 1rem;
+      padding: 4px;
+      background: linear-gradient(90deg, yellow, green, skyblue, darkorange, yellow);
+      background-size: 400% 400%;
+      animation: spinBorder 3s linear infinite;
+    }
+
+    @keyframes spinBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    /* ============ CIRCLE IMAGE BLOCKS ============ */
+    .circle-block {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      border: 4px solid #b8860b;
+    }
+
+    .circle-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ============ RIGHT CIRCLE SLIDER ANIMATION ============ */
+    .slide-container {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .slide-container img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide-container img.active {
+      opacity: 1;
+    }
+
+    /* ============ ANIMATED COLOR TEXT FOR "Our Clothing Collection" ============ */
+    @keyframes colorChange {
+      0% { color: yellow; transform: scale(1); }
+      25% { color: green; transform: scale(1.05); }
+      50% { color: skyblue; transform: scale(1.1); }
+      75% { color: darkorange; transform: scale(1.05); }
+      100% { color: yellow; transform: scale(1); }
+    }
+
+    .animated-title {
+      animation: colorChange 4s infinite ease-in-out;
+      text-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- ============ HEADER ============ -->
+  <header class="bg-yellow-800 text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center px-6 py-4">
+      <h1 class="text-2xl font-bold tracking-wide">RAHAMAN TAILOR</h1>
+      <nav class="space-x-6 text-lg font-medium">
+        <a href="#home" class="hover:text-yellow-300">Home</a>
+        <a href="#services" class="hover:text-yellow-300">Services</a>
+        <a href="https://share.google/ac5tjcBhYVBeGghMy" target="_blank" class="hover:text-yellow-300">Find Us</a>
+        <a href="#contact" class="hover:text-yellow-300">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HOME SECTION ============ -->
+  <section id="home" class="bg-yellow-50 text-center py-8">
+    <h2 class="text-4xl font-bold glow text-yellow-800">
+      ✨ 50 Years Of Trust with RAHAMAN TAILOR ✂️
+    </h2>
+    <p class="text-lg mt-3 text-gray-700 animate-pulse">
+      Custom Designs • Elegant Styles • Perfect Stitching
+    </p>
+      <p class="tagline mt-3 text-yellow-900 font-semibold text-lg">Your Clothes, Our Craft — Stitched with Trust.</p>
+  </section>
+
+  <!-- ============ SERVICES SECTION ============ -->
+  <section id="services" class="py-10 px-4 sm:px-8">
+    <h2 class="text-3xl font-bold text-center mb-10 animated-title">
+      Our Clothing Collection
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+      <div id="itemsContainer" class="contents"></div>
+    </div>
+
+    <script>
+      const clothes = [
+        { name: "Shirt", img: "images/shirt.jpg" },
+        { name: "Pant", img: "images/pant.jpeg" },
+        { name: "Kurta", img: "images/kurta.jpg" },
+        { name: "Blazer", img: "images/blazer.jpg" },
+        { name: "Sherwani", img: "images/sherwani.jpg" },
+        { name: "Suit", img: "images/meraj_ahad.jpg" },
+        { name: "Bandi", img: "images/bandi.jpg" },
+        { name: "Three Piece", img: "images/3 Piece.jpeg" },
+        { name: "Lehenga", img: "images/lehenga.jpg" },
+        { name: "Choli", img: "images/choli.jpg" },
+        { name: "Blouse", img: "images/blouse.jpg" },
+        { name: "Ladies Suit", img: "images/plazo_suit.jpg" },
+        { name: "Holi Kurta", img: "images/holi_kurta.png" },
+        { name: "Plazo Suit", img: "images/pico.jpg" },
+        { name: "Baby Cloths", img: "images/baby_cloths.jpg" },
+        { name: "Alter Cloths", img: "images/alter_cloths.jpeg" }
+      ];
+
+      const container = document.getElementById("itemsContainer");
+      const whatsappNumber = "917992329377";
+
+      clothes.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "flip-card animated-border cursor-pointer";
+        card.innerHTML = `
+          <div class="flip-inner shadow-xl">
+            <div class="flip-front relative">
+              <img src="${item.img}" alt="${item.name}" class="w-full h-80 object-cover rounded-lg">
+              <div class="absolute bottom-0 bg-black bg-opacity-40 text-white text-xl font-semibold w-full text-center py-2">${item.name}</div>
+            </div>
+            <div class="flip-back">
+              <a href="https://wa.me/${whatsappNumber}?text=Hello, I want an appointment for ${item.name}" target="_blank" class="btn w-32">Appointment</a>
+              <a href="tel:+${whatsappNumber}" class="btn w-32">Call Now</a>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      // flip logic
+      let currentFlipped = null;
+      document.addEventListener("click", e => {
+        const card = e.target.closest(".flip-card");
+        if (!card) return;
+        if (e.target.closest("a")) return;
+        if (currentFlipped && currentFlipped !== card) currentFlipped.classList.remove("flipped");
+        card.classList.toggle("flipped");
+        currentFlipped = card.classList.contains("flipped") ? card : null;
+      });
+    </script>
+  </section>
+
+  <!-- ============ CONTACT SECTION ============ -->
+  <section id="contact" class="py-16 bg-yellow-50 text-center relative overflow-hidden">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-8 mb-6">
+      <!-- Left Circle -->
+      <div class="circle-block">
+        <img src="images/hero.jpg" alt="Tailor Static">
+      </div>
+      <h2 class="text-4xl font-bold glow text-yellow-800">Contact Us</h2>
+      <!-- Right Circle -->
+      <div class="slide-container" id="photoSlider">
+        <img src="slides_images/choli.jpg" class="active" alt="Slide 1">
+        <img src="slides_images/papa01.jpg" alt="Slide 2">
+        <img src="slides_images/meraj_ahad.jpg" alt="Slide 3">
+        <img src="slides_images/sherwani.jpg" alt="Slide 4">
+        <img src="slides_images/kurta.jpg" alt="Slide 5">
+        <img src="slides_images/lehenga.jpg" alt="Slide 6">
+        <img src="slides_images/ahad1.jpg" alt="Slide 7">
+        <img src="slides_images/papa02.jpg" alt="Slide 8">
+      </div>
+    </div>
+    <p class="max-w-3xl mx-auto text-lg text-gray-700 px-4 leading-relaxed">
+      📍 <strong>RAHAMAN TAILOR</strong><br>
+      Baheri Bazar, Block Road, Darbhanga, Bihar 847105<br>
+      👔 <strong class="text-blue-600 font-bold">Tailor's Master : Md. Nisharul</strong><br>
+      📞 <a href="tel:+917992329377" class="text-yellow-800 font-semibold hover:underline">+91 7992329377</a><br>
+      💬 <a href="https://wa.me/917992329377" target="_blank" class="text-yellow-800 font-semibold hover:underline">Chat on WhatsApp</a>
+    </p>
+  </section>
+
+  <script>
+    // Right side sliding photo logic
+    const slides = document.querySelectorAll("#photoSlider img");
+    let current = 0;
+
+    setInterval(() => {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }, 2500);
+  </script>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-yellow-800 text-white text-center py-6">
+    © 2025 RAHAMAN TAILOR. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
