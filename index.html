@@ -16,7 +16,7 @@
 
     .flip-inner {
       position: relative;
-      width: 100%; 
+      width: 100%;
       height: 100%;
       transition: transform 0.8s;
       transform-style: preserve-3d;
@@ -53,12 +53,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.8rem;
       padding: 1rem;
       border-radius: 0.9rem;
     }
 
-    /* ============ BUTTON STYLE ============ */
+    /* BUTTONS */
     .btn {
       border: 2px solid #fff;
       padding: 0.6rem 1.2rem;
@@ -66,25 +66,24 @@
       transition: 0.3s;
       font-weight: 600;
       text-align: center;
+      width: 8rem;
     }
-
     .btn:hover {
       background-color: white;
       color: #8b5a2b;
     }
 
-    /* ============ GLOW TEXT ANIMATION ============ */
+    /* GLOW TEXT */
     @keyframes glowText {
       0% { text-shadow: 0 0 5px #fff, 0 0 10px #ffcc00, 0 0 15px #b8860b; opacity: 0; }
       50% { opacity: 1; }
       100% { text-shadow: 0 0 10px #fff, 0 0 20px #ffcc00, 0 0 30px #b8860b; opacity: 1; }
     }
-
     .glow {
       animation: glowText 2s ease-in-out infinite alternate;
     }
 
-    /* ============ ANIMATED MULTICOLOR BORDER ============ */
+    /* BORDER ANIMATION (used by item cards and design images) */
     .animated-border {
       position: relative;
       border-radius: 1rem;
@@ -102,7 +101,7 @@
 
     html { scroll-behavior: smooth; }
 
-    /* ============ CIRCLE IMAGE BLOCKS ============ */
+    /* IMAGE CIRCLE */
     .circle-block {
       width: 160px;
       height: 160px;
@@ -118,7 +117,7 @@
       object-fit: cover;
     }
 
-    /* ============ RIGHT CIRCLE SLIDER ANIMATION ============ */
+    /* SLIDER */
     .slide-container {
       position: relative;
       width: 160px;
@@ -140,7 +139,7 @@
       opacity: 1;
     }
 
-    /* ============ ANIMATED COLOR TEXT ============ */
+    /* TITLE COLOR ANIMATION */
     @keyframes colorChange {
       0% { color: yellow; transform: scale(1); }
       25% { color: green; transform: scale(1.05); }
@@ -154,12 +153,7 @@
       text-shadow: 0 0 8px rgba(0,0,0,0.2);
     }
 
-    /* ============ GLOW BORDER BUTTON ============ */
-    .glow-border {
-      position: relative;
-      overflow: hidden;
-    }
-
+    /* GLOW BORDER BUTTON */
     .glow-border::before {
       content: "";
       position: absolute;
@@ -171,7 +165,7 @@
       animation: glowingBorder 3s linear infinite;
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
-              mask-composite: exclude;
+      mask-composite: exclude;
     }
 
     @keyframes glowingBorder {
@@ -179,12 +173,50 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    /* ZOOM IMAGE STYLE */
+    .zoomed {
+      max-width: 100%;
+      max-height: 80vh;
+      display: block;
+      border-radius: 0.75rem;
+    }
+
+    /* Zoom overlay and frame */
+    #zoomOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    #zoomOverlay.active {
+      display: flex;
+    }
+    .zoom-frame {
+      background: transparent;
+      border-radius: 1rem;
+      padding: 6px;
+    }
+    .zoom-frame .zoom-inner {
+      background: #fff;
+      border-radius: 0.7rem;
+      padding: 6px;
+      display: inline-block;
+    }
+
+    body.overlay-open {
+      overflow: hidden;
+    }
   </style>
 </head>
 
 <body class="bg-gray-100 text-gray-800">
 
-  <!-- ============ HEADER ============ -->
+  <!-- HEADER -->
   <header class="bg-yellow-800 text-white shadow-lg sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center px-6 py-4">
       <h1 class="text-2xl font-bold tracking-wide">RAHAMAN TAILOR</h1>
@@ -198,7 +230,7 @@
     </div>
   </header>
 
-  <!-- ============ HOME SECTION ============ -->
+  <!-- HOME -->
   <section id="home" class="bg-yellow-50 text-center py-8">
     <h2 class="text-4xl font-bold glow text-yellow-800">
       ✨ 50 Years Of Trust with RAHAMAN TAILOR ✂️
@@ -206,10 +238,12 @@
     <p class="text-lg mt-3 text-gray-700 animate-pulse">
       Custom Designs • Elegant Styles • Perfect Stitching
     </p>
-    <p class="tagline mt-3 text-yellow-900 font-semibold text-lg">Your Clothes, Our Craft — Stitched with Trust.</p>
+    <p class="tagline mt-3 text-yellow-900 font-semibold text-lg">
+      Your Clothes, Our Craft — Stitched with Trust.
+    </p>
   </section>
 
-  <!-- ============ SERVICES SECTION ============ -->
+  <!-- SERVICES -->
   <section id="services" class="py-10 px-4 sm:px-8">
     <h2 class="text-3xl font-bold text-center mb-10 animated-title">
       Our Clothing Collection
@@ -228,13 +262,13 @@
         { name: "Sherwani", img: "images/sherwani.jpg" },
         { name: "Suit", img: "images/meraj_ahad.jpg" },
         { name: "Bandi", img: "images/bandi.jpg" },
-        { name: "Three Piece", img: "images/3 Piece.jpeg" },
+        { name: "Three Piece", img: "images/three_piece.png" },
         { name: "Lehenga", img: "images/lehenga.jpg" },
         { name: "Choli", img: "images/choli.jpg" },
         { name: "Blouse", img: "images/blouse.jpg" },
         { name: "Ladies Suit", img: "images/plazo_suit.jpg" },
         { name: "Holi Kurta", img: "images/holi_kurta.png" },
-        { name: "Plazo Suit", img: "images/pico.jpg" },
+        { name: "Pico Cloths", img: "images/pico.jpg" },
         { name: "Baby Cloths", img: "images/baby_cloths.jpg" },
         { name: "Alter Cloths", img: "images/alter_cloths.jpeg" }
       ];
@@ -242,7 +276,7 @@
       const container = document.getElementById("itemsContainer");
       const whatsappNumber = "916299078485";
 
-      clothes.forEach(item => {
+      clothes.forEach((item, index) => {
         const card = document.createElement("div");
         card.className = "flip-card animated-border cursor-pointer";
         card.innerHTML = `
@@ -252,52 +286,137 @@
               <div class="absolute bottom-0 bg-black bg-opacity-40 text-white text-xl font-semibold w-full text-center py-2">${item.name}</div>
             </div>
             <div class="flip-back">
-              <a href="https://wa.me/${whatsappNumber}?text=Hello, I want an appointment for ${item.name}" target="_blank" class="btn w-32">Appointment</a>
-              <a href="tel:+${whatsappNumber}" class="btn w-32">Call Now</a>
+              <a href="https://wa.me/${whatsappNumber}?text=Hello, I want an appointment for ${item.name}" target="_blank" class="btn">Appointment</a>
+              <a href="tel:+${whatsappNumber}" class="btn">Call Now</a>
+              <button class="btn view-btn" data-item="${item.name}" data-index="${index}">View Design</button>
             </div>
           </div>
         `;
         container.appendChild(card);
       });
 
-      // flip logic
       let currentFlipped = null;
       document.addEventListener("click", e => {
         const card = e.target.closest(".flip-card");
         if (!card) return;
-        if (e.target.closest("a")) return;
+        if (e.target.closest("a") || e.target.classList.contains("view-btn")) return;
         if (currentFlipped && currentFlipped !== card) currentFlipped.classList.remove("flipped");
         card.classList.toggle("flipped");
         currentFlipped = card.classList.contains("flipped") ? card : null;
       });
+
+      const modal = document.createElement("div");
+      modal.id = "designModal";
+      modal.className = "fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50";
+      modal.innerHTML = `
+        <div class="bg-white rounded-xl shadow-2xl p-6 max-w-3xl w-full mx-4 relative">
+          <button id="closeModal" class="absolute top-2 right-3 text-2xl font-bold text-gray-500 hover:text-gray-800">&times;</button>
+          <h3 id="modalTitle" class="text-2xl font-bold text-yellow-800 mb-4 text-center"></h3>
+          <div id="designGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      const zoomOverlay = document.createElement("div");
+      zoomOverlay.id = "zoomOverlay";
+      zoomOverlay.className = "fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-[100]";
+      zoomOverlay.innerHTML = `
+        <div class="animated-border zoom-frame" id="zoomFrame" style="display:inline-block;">
+          <div class="zoom-inner">
+            <img id="zoomImg" class="zoomed" src="" alt="Zoomed image">
+          </div>
+        </div>
+      `;
+      document.body.appendChild(zoomOverlay);
+
+      document.addEventListener("click", e => {
+        if (e.target.classList.contains("view-btn")) {
+          const itemName = e.target.dataset.item;
+          const modalTitle = document.getElementById("modalTitle");
+          const designGrid = document.getElementById("designGrid");
+
+          modalTitle.textContent = `${itemName} Designs`;
+          designGrid.innerHTML = "";
+
+          for (let i = 1; i <= 6; i++) {
+            const imgBox = document.createElement("div");
+            imgBox.className = "animated-border rounded-lg overflow-hidden relative";
+            imgBox.innerHTML = `
+              <img src="designs/${itemName.toLowerCase().replace(/ /g,'_')}_${i}.jpg"
+                   alt="Design ${i}"
+                   class="w-full h-40 object-cover design-img cursor-pointer">
+              <span class="absolute bottom-1 right-2 bg-yellow-700 text-white text-sm px-2 py-0.5 rounded">#${i}</span>
+            `;
+            designGrid.appendChild(imgBox);
+          }
+
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+          zoomOverlay.classList.remove("active");
+          zoomOverlay.classList.remove("flex");
+          document.body.classList.remove('overlay-open');
+        }
+
+        if (e.target.id === "closeModal" || e.target.id === "designModal") {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+          closeZoom();
+        }
+
+        if (e.target.classList.contains("design-img")) {
+          const src = e.target.src;
+          const zoomImg = document.getElementById("zoomImg");
+          zoomImg.src = src;
+          zoomOverlay.classList.remove("hidden");
+          zoomOverlay.classList.add("flex");
+          document.body.classList.add('overlay-open');
+          setTimeout(() => zoomOverlay.classList.add('active'), 10);
+        }
+
+        if (e.target.id === "zoomOverlay") closeZoom();
+      });
+
+      document.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'zoomImg') closeZoom();
+      });
+
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Escape') {
+          if (!modal.classList.contains('hidden')) {
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+          }
+          closeZoom();
+        }
+      });
+
+      function closeZoom() {
+        const zoomImg = document.getElementById("zoomImg");
+        zoomImg.src = "";
+        zoomOverlay.classList.remove("active");
+        zoomOverlay.classList.add("hidden");
+        zoomOverlay.classList.remove("flex");
+        document.body.classList.remove('overlay-open');
+      }
     </script>
   </section>
 
-  <!-- ============ REVIEW SECTION ============ -->
+  <!-- REVIEW -->
   <section id="review" class="py-16 bg-gradient-to-r from-yellow-100 via-yellow-50 to-yellow-100 text-center relative overflow-hidden">
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="w-72 h-72 bg-yellow-300 opacity-20 rounded-full absolute -top-20 -left-20 animate-pulse"></div>
-      <div class="w-60 h-60 bg-yellow-400 opacity-10 rounded-full absolute bottom-0 right-0 animate-bounce"></div>
-    </div>
-
-    <h2 class="text-4xl font-extrabold mb-6 text-yellow-800 animated-title relative z-10">
+    <h2 class="text-4xl font-extrabold mb-6 text-yellow-800 animated-title">
       💬 Share Your Experience With Us!
     </h2>
-
-    <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto relative z-10">
-      We value your feedback! Help others discover <strong>RAHAMAN TAILOR</strong> by leaving a review, rating us, or uploading your photos on Google Maps.
+    <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+      We value your feedback! Help others discover <strong>RAHAMAN TAILOR</strong> by leaving a review or rating us on Google Maps.
     </p>
-
-    <a href="https://share.google/ac5tjcBhYVBeGghMy" target="_blank" 
-       class="relative z-10 inline-block bg-yellow-700 text-white font-semibold text-lg px-8 py-3 rounded-full shadow-lg hover:bg-yellow-800 transition-all duration-300 transform hover:scale-110 hover:shadow-2xl glow-border">
+    <a href="https://share.google/ac5tjcBhYVBeGghMy" target="_blank"
+       class="bg-yellow-700 text-white font-semibold text-lg px-8 py-3 rounded-full shadow-lg hover:bg-yellow-800 transition-all duration-300 glow-border">
       🌟 Write a Google Review
     </a>
-
-    <div class="mt-10 mx-auto w-40 h-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400 animate-pulse rounded-full"></div>
   </section>
 
-  <!-- ============ CONTACT SECTION ============ -->
-  <section id="contact" class="py-16 bg-yellow-50 text-center relative overflow-hidden">
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 bg-yellow-50 text-center">
     <div class="flex flex-col sm:flex-row items-center justify-center gap-8 mb-6">
       <div class="circle-block">
         <img src="images/hero.jpg" alt="Tailor Static">
@@ -333,9 +452,9 @@
     }, 2500);
   </script>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="bg-yellow-800 text-white text-center py-6">
-    © 2025 RAHAMAN TAILOR. All Rights Reserved.
+  <!-- FOOTER -->
+  <footer class="bg-yellow-800 text-white text-center py-4">
+    <p>&copy; 2025 Rahaman Tailor. All Rights Reserved.</p>
   </footer>
 
 </body>
